@@ -36,15 +36,11 @@ soup = BeautifulSoup(resp.text, "lxml")
 trs = soup.find("table", class_="font16").find_all("tr")
 
 shop_info = []
-numbers = []
-names = []
-addresses = []
 
 for i in range(1, len(trs)):
     tds = trs[i].find_all("td")
     shop_info.append([tds[0].text.strip(), tds[1].text.strip(), tds[2].text.strip()])
-
-#print(shop_info)
+    #tds[0]是店號，tds[1]是店名，tds[2]是住址
 
 df=pd.DataFrame(shop_info, columns = ["店號", "店名", "住址"])
 
